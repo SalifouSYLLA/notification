@@ -2,53 +2,27 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test Notification Native</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px;
-      background-color: #f9f9f9;
-    }
-    button {
-      padding: 12px 20px;
-      font-size: 16px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #0056b3;
-    }
-  </style>
+  <title>Notification Native Test</title>
 </head>
 <body>
-  <h1>Test de Notification Native</h1>
-  <p>Cliquez sur le bouton pour envoyer une notification native.</p>
-  <button onclick="envoyerNotification()">Envoyer Notification</button>
+  <h2>Test Notification</h2>
+  <button onclick="sendNotification()">Envoyer une notification</button>
 
   <script>
-    // Demander la permission de notification au chargement de la page
     document.addEventListener("DOMContentLoaded", () => {
       if ("Notification" in window && Notification.permission !== "granted") {
         Notification.requestPermission();
       }
     });
 
-    function envoyerNotification() {
-      if ("Notification" in window) {
-        if (Notification.permission === "granted") {
-          new Notification("🔔 Ceci est une notification native depuis le navigateur !");
-        } else {
-          alert("Vous devez autoriser les notifications dans votre navigateur.");
-        }
+    function sendNotification() {
+      if ("Notification" in window && Notification.permission === "granted") {
+        new Notification("🔔 Ceci est une notification native !");
       } else {
-        alert("Les notifications ne sont pas supportées sur ce navigateur.");
+        alert("Notifications non autorisées !");
       }
     }
   </script>
 </body>
 </html>
+
